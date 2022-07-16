@@ -1,0 +1,28 @@
+.searchInput {
+  height: 3rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0rem 2.4rem;
+  box-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.2);
+  color: hsl(234, 11%, 52%);
+
+  &::placeholder {
+    color: hsl(234, 39%, 85%);
+  }
+  &:placeholder-shown {
+    color: hsl(234, 11%, 52%);
+  }
+}
+
+.search-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top: 45%;
+  transform: translateY(-45%);
+  color: hsl(234, 11%, 52%);
+}
