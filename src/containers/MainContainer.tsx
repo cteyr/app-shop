@@ -47,7 +47,7 @@ const MainContainer = () => {
                 <div className="product-info">
                   <span className="product-tittle">{product.title}</span>
                   <span className="product-category">{product.category}</span>
-                  <span className="product-price">{`$${product.price} EUR`}</span>
+                  <span className="product-price">{`${product.price} €`}</span>
                 </div>
                 <div className="button-cart-buy">
                   <Button text="Add to Cart" />

@@ -1,5 +1,24 @@
-.tittle {
-  font-size: 2rem;
-  padding-bottom: 1rem;
-  color: hsl(240, 5%, 38%);
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  .tittle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    h1 {
+      font-size: 2rem;
+
+      color: hsl(240, 5%, 38%);
+    }
+  }
+
+  .cart-icon {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
 }
