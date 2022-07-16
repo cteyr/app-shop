@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { ItemProduct } from "../components/ItemProduct";
 import { FiSearch } from "react-icons/fi";
 import { useProducts } from "../hooks/useProducts";
 import { Product } from "../types/product";
@@ -9,8 +9,7 @@ import { Ring } from "@uiball/loaders";
 
 const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
-  const { getAllProducts, Products, setProducts, IsLoading, setIsLoading } =
-    useProducts();
+  const { getAllProducts, Products, IsLoading } = useProducts();
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -42,17 +41,7 @@ const MainContainer = () => {
 
           <div className="product-container">
             {filterCategory().map((product) => (
-              <div key={product.id} className="item-product">
-                <img src={product.image} alt="" />
-                <div className="product-info">
-                  <span className="product-tittle">{product.title}</span>
-                  <span className="product-category">{product.category}</span>
-                  <span className="product-price">{`${product.price} €`}</span>
-                </div>
-                <div className="button-cart-buy">
-                  <Button text="Add to Cart" />
-                </div>
-              </div>
+              <ItemProduct product={product} key={product.id} />
             ))}
           </div>
         </div>
