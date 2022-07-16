@@ -31,7 +31,7 @@ const MainContainer = () => {
         <Header />
         <div className="containerInput">
           <Input
-            placeholder="Search"
+            placeholder="Search Category"
             value={InputValue}
             handleInputChange={handleInputonChange}
           />
@@ -43,6 +43,7 @@ const MainContainer = () => {
               <img src={product.image} alt="" />
               <div className="product-info">
                 <span className="product-tittle">{product.title}</span>
+                <span className="product-category">{product.category}</span>
                 <span className="product-price">{`$${product.price} EUR`}</span>
               </div>
               <div className="button-cart-buy">
