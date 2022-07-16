@@ -1,6 +1,6 @@
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
-import { FiSearch } from "react-icons/Fi";
+import { FiSearch } from "react-icons/fi";
 
 const MainContainer = () => {
   return (
