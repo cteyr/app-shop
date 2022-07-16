@@ -1,0 +1,30 @@
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+
+    .containerInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .product-container {
+      height: 100%;
+      width: 100%;
+      background-color: yellow;
+    }
+  }
+}
