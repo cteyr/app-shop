@@ -22,9 +22,25 @@
       margin-bottom: 1.5rem;
     }
     .product-container {
-      height: 100%;
       width: 100%;
-      background-color: yellow;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(35vw, 1fr));
+      gap: 1rem;
+      flex: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        // display: none;
+      }
+
+      .item-product {
+        display: flex;
+        height: 10rem;
+        width: 100%;
+        background-color: blue;
+      }
     }
   }
 }
