@@ -11,7 +11,7 @@ const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
   const { getAllProducts, Products, IsLoading } = useProducts();
   const [Collapsed, setCollapsed] = useState("collapsed");
-  const [CurrentCategory, setCurrentCategory] = useState("all");
+  const [CurrentCategory, setCurrentCategory] = useState("All");
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -21,15 +21,31 @@ const MainContainer = () => {
   }, []);
 
   const filterCategory = (): Product[] => {
-    const filtered = Products.filter((product) =>
-      product.category.toUpperCase().includes(InputValue.toUpperCase())
-    );
-    return filtered;
+    if (CurrentCategory !== "All") {
+      const filtered = Products.filter(
+        (product) => product.category === CurrentCategory
+      );
+      return filtered;
+    } else if (CurrentCategory === "All") {
+      const filtered = Products;
+      return filtered;
+    }
   };
 
   const HanleChangeSelectMenu = (category: string) => {
     if (category !== "") {
       const categorySelected = document.getElementById(category)?.textContent;
+      if (categorySelected === "All") {
+        setCurrentCategory("All");
+      } else if (categorySelected === "Men's clothing") {
+        setCurrentCategory("men's clothing");
+      } else if (categorySelected === "Jewelery") {
+        setCurrentCategory("jewelery");
+      } else if (categorySelected === "Electronics") {
+        setCurrentCategory("electronics");
+      } else if (categorySelected === "Women's clothing") {
+        setCurrentCategory("women's clothing");
+      }
       console.log(categorySelected);
     }
 
