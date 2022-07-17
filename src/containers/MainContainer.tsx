@@ -10,6 +10,7 @@ import { Ring } from "@uiball/loaders";
 const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
   const { getAllProducts, Products, IsLoading } = useProducts();
+  const [Collapsed, setCollapsed] = useState("collapsed");
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -25,14 +26,27 @@ const MainContainer = () => {
     return filtered;
   };
 
+  const HanleChangeSelectMenu = (category: string) => {
+    if (category !== "") {
+      const field = document.getElementById(category)?.textContent;
+      console.log(field);
+    }
+
+    if (Collapsed === "") {
+      setCollapsed("collapsed");
+    } else {
+      setCollapsed("");
+    }
+  };
+
   return (
     <div className="mainContainer">
       {IsLoading ? (
         <div className="container">
-          <Header />
+          <Header onClick={HanleChangeSelectMenu} collapsed={Collapsed} />
           <div className="containerInput">
             <Input
-              placeholder="Search Category"
+              placeholder="Search"
               value={InputValue}
               handleInputChange={handleInputonChange}
             />
