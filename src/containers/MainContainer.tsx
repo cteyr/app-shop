@@ -15,7 +15,6 @@ const MainContainer = () => {
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-    console.log(InputValue);
   };
   useEffect(() => {
     getAllProducts();
@@ -26,10 +25,17 @@ const MainContainer = () => {
       const filtered = Products.filter(
         (product) => product.category === CurrentCategory
       );
-      return filtered;
+
+      const newfiltered = filtered.filter((product) =>
+        product.title.toUpperCase().includes(InputValue.toUpperCase())
+      );
+      return newfiltered;
     } else if (CurrentCategory === "All") {
       const filtered = Products;
-      return filtered;
+      const newfiltered = filtered.filter((product) =>
+        product.title.toUpperCase().includes(InputValue.toUpperCase())
+      );
+      return newfiltered;
     }
   };
 
@@ -47,7 +53,6 @@ const MainContainer = () => {
       } else if (categorySelected === "Women's clothing") {
         setCurrentCategory("women's clothing");
       }
-      console.log(categorySelected);
     }
 
     if (Collapsed === "") {
