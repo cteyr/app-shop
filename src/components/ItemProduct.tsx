@@ -6,7 +6,9 @@ const ItemProduct = ({ product }: IProps) => {
     <div key={product.id} className="item-product">
       <img src={product.image} alt="" />
       <div className="product-info">
-        <span className="product-tittle">{product.title}</span>
+        <p className="product-tittle" title={product.title}>
+          {product.title}
+        </p>
         <span className="product-category">{product.category}</span>
         <span className="product-price">{`${product.price} €`}</span>
         <div className="button-cart-buy">
