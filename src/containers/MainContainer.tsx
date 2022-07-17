@@ -11,6 +11,7 @@ const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
   const { getAllProducts, Products, IsLoading } = useProducts();
   const [Collapsed, setCollapsed] = useState("collapsed");
+  const [CurrentCategory, setCurrentCategory] = useState("all");
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -28,8 +29,8 @@ const MainContainer = () => {
 
   const HanleChangeSelectMenu = (category: string) => {
     if (category !== "") {
-      const field = document.getElementById(category)?.textContent;
-      console.log(field);
+      const categorySelected = document.getElementById(category)?.textContent;
+      console.log(categorySelected);
     }
 
     if (Collapsed === "") {

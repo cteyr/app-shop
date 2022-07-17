@@ -19,34 +19,34 @@ const Header = ({ onClick, collapsed }: IProps) => {
               />
             </span>
             <div data-toggle={collapsed} className="options">
-              <div id="All" className="option" onClick={() => onClick("All")}>
+              <div id="all" className="option" onClick={() => onClick("all")}>
                 All
               </div>
               <div
-                id="Men's clothing"
+                id="men's clothing"
                 className="option"
-                onClick={() => onClick("Men's clothing")}
+                onClick={() => onClick("men's clothing")}
               >
                 Men's clothing
               </div>
               <div
-                id="Jewelery"
+                id="jewelery"
                 className="option"
-                onClick={() => onClick("Jewelery")}
+                onClick={() => onClick("jewelery")}
               >
                 Jewelery
               </div>
               <div
-                id="Electronics"
+                id="electronics"
                 className="option"
-                onClick={() => onClick("Electronics")}
+                onClick={() => onClick("electronics")}
               >
                 Electronics
               </div>
               <div
-                id="Women's clothing"
+                id="women's clothing"
                 className="option"
-                onClick={() => onClick("Women's clothing")}
+                onClick={() => onClick("women's clothing")}
               >
                 Women's clothing
               </div>
