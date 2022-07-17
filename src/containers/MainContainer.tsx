@@ -13,9 +13,6 @@ const MainContainer = () => {
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
-  const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -71,7 +68,9 @@ const MainContainer = () => {
             <Input
               placeholder="Search"
               value={InputValue}
-              handleInputChange={handleInputonChange}
+              handleInputChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setInputValue(e.target.value)
+              }
             />
             <FiSearch className="search-icon" />
           </div>
