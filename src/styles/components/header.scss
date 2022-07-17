@@ -27,7 +27,7 @@
     .select {
       display: flex;
       justify-content: flex-end;
-      width: 10rem;
+      width: 10.5rem;
       margin-top: 0.5rem;
       position: relative;
       z-index: 1;
@@ -42,13 +42,14 @@
 
         .options {
           position: absolute;
-          margin-left: -8.3rem;
+          margin-left: -8.7rem;
           background-color: white;
           width: 100%;
           padding: 0.5rem 0;
           margin-top: 5px;
           border: 1px solid #ccc;
           border-radius: 5px;
+          color: hsl(240, 5%, 38%);
           z-index: 1;
 
           .option {
