@@ -15,6 +15,7 @@ const MainContainer = () => {
 
   const handleInputonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
+    console.log(InputValue);
   };
   useEffect(() => {
     getAllProducts();
