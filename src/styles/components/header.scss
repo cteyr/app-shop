@@ -31,9 +31,7 @@
       position: relative;
       z-index: 1;
       .selected-option {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin-top: 0.6rem;
         cursor: pointer;
 
         .select-icon {
