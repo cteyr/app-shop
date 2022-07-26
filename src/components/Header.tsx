@@ -1,6 +1,7 @@
 import { BiArchiveIn } from "react-icons/bi";
-import { useState } from "react";
-const Header = ({ onClick, collapsed }: IProps) => {
+import { TbPlus } from "react-icons/tb";
+import { TbMinus } from "react-icons/tb";
+const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed }: IProps) => {
   return (
     <div className="header">
       <div className="tittle">
@@ -12,6 +13,13 @@ const Header = ({ onClick, collapsed }: IProps) => {
           <div className="selected-option">
             <span className="select-value"></span>
             <span className="select-icon">
+              <TbMinus
+                size={28}
+                height={80}
+                color="#616161"
+                onClick={ordenar_asc}
+              />
+              <TbPlus size={28} color="#616161" onClick={ordenar_desc} />
               <BiArchiveIn
                 size={28}
                 color="#616161"
@@ -61,6 +69,8 @@ const Header = ({ onClick, collapsed }: IProps) => {
 type IProps = {
   onClick(option: string): void;
   collapsed: string;
+  ordenar_asc?: () => void;
+  ordenar_desc?: () => void;
 };
 
 export { Header };

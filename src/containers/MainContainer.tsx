@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
 import { ItemProduct } from "../components/ItemProduct";
@@ -6,16 +6,13 @@ import { FiSearch } from "react-icons/fi";
 import { useProducts } from "../hooks/useProducts";
 import { Product } from "../types/product";
 import { Ring } from "@uiball/loaders";
+import orderBy from "lodash/orderBy";
 
 const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
-  const { getAllProducts, Products, IsLoading } = useProducts();
+  const { setProducts, Products, IsLoading } = useProducts();
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
 
   const filterCategory = (): Product[] => {
     if (CurrentCategory !== "All") {
@@ -34,6 +31,16 @@ const MainContainer = () => {
       );
       return newfiltered;
     }
+  };
+
+  const Ordernar_asc = () => {
+    const newProductOrder = orderBy(Products, "price", "asc");
+    setProducts(newProductOrder);
+  };
+
+  const Ordernar_desc = () => {
+    const newProductOrder = orderBy(Products, "price", "desc");
+    setProducts(newProductOrder);
   };
 
   const HanleChangeSelectMenu = (category: string) => {
@@ -63,7 +70,12 @@ const MainContainer = () => {
     <div className="mainContainer">
       {IsLoading ? (
         <div className="container">
-          <Header onClick={HanleChangeSelectMenu} collapsed={Collapsed} />
+          <Header
+            onClick={HanleChangeSelectMenu}
+            collapsed={Collapsed}
+            ordenar_asc={Ordernar_asc}
+            ordenar_desc={Ordernar_desc}
+          />
           <div className="containerInput">
             <Input
               placeholder="Search"

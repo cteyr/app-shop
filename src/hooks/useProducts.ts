@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { api } from "../api/api";
 import { Product } from "../types/product";
 
 const useProducts = () => {
   const [Products, setProducts] = useState<Product[]>([]);
   const [IsLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   const handleResponse = async () => {
     setIsLoading(false);

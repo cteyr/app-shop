@@ -4,6 +4,9 @@
   justify-content: center;
   position: relative;
   width: 100%;
+  @media screen and (max-width: 768px) {
+    justify-content: left;
+  }
   .tittle {
     position: absolute;
     h1 {
@@ -35,13 +38,16 @@
         cursor: pointer;
 
         .select-icon {
-          padding-top: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
           height: 100%;
         }
 
         .options {
           position: absolute;
-          margin-left: -9.2rem;
+          margin-left: -4.8rem;
           background-color: white;
           width: 100%;
           padding: 0.5rem 0;
