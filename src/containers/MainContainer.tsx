@@ -82,7 +82,7 @@ const MainContainer = () => {
           </div>
         </div>
       ) : (
-        <Ring size={80} speed={0.9} color="hsl(240, 5%, 38%)" />
+        <Ring size={80} speed={0.9} color="#1976d2" />
       )}
     </div>
   );
