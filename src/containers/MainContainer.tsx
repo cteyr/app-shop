@@ -10,6 +10,7 @@ import orderBy from "lodash/orderBy";
 
 const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
+  const [isActive, setisActive] = useState("");
   const { setProducts, Products, IsLoading } = useProducts();
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
@@ -43,15 +44,30 @@ const MainContainer = () => {
   const Ordernar_asc = () => {
     const newProductOrder = orderBy(Products, "price", "asc");
     setProducts(newProductOrder);
+    if(isActive ==="" || isActive ==="Plus"){
+      setisActive("Minus");
+    }else{
+      setisActive("");
+    }
   };
 
   const Ordernar_desc = () => {
     const newProductOrder = orderBy(Products, "price", "desc");
     setProducts(newProductOrder);
+    if(isActive ==="" || isActive ==="Minus"){
+      setisActive("Plus");
+    }else{
+      setisActive("");
+    }
   };
 
   const HanleChangeSelectMenu = (category: string) => {
-    setCollapsed("");
+    if(Collapsed==="collapsed"){
+      setCollapsed("");
+    }else{
+      setCollapsed("collapsed");
+    }
+    
     if (category !== "") {
       const categorySelected = document.getElementById(category)?.textContent;
       if (categorySelected === "All") {
@@ -78,6 +94,7 @@ const MainContainer = () => {
             collapsed={Collapsed}
             ordenar_asc={Ordernar_asc}
             ordenar_desc={Ordernar_desc}
+            isActive={isActive}
           />
           <div className="containerInput">
             <Input

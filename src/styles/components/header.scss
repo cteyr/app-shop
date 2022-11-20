@@ -43,6 +43,16 @@
           justify-content: center;
           gap: 0.5rem;
           height: 100%;
+
+          .svg{
+            color: rgb(97, 97, 97);;
+          }
+
+          .Active{
+            color: white;
+            background-color: #1976d2;
+            border-radius: 5px;
+          }
         }
 
         .options {

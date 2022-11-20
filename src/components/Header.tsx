@@ -1,7 +1,41 @@
+import {useReducer,useEffect } from "react";
 import { BiArchiveIn } from "react-icons/bi";
 import { TbPlus } from "react-icons/tb";
 import { TbMinus } from "react-icons/tb";
-const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed }: IProps) => {
+
+const initialState = {
+  Minus: "",
+  Plus: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "Minus":
+      return {
+        Minus: "Active",
+        Plus: "",
+      };
+    case "Plus":
+      return {
+        Minus: "",
+        Plus: "Active",
+      };
+      case "":
+      return {
+        Minus: "",
+        Plus: "",
+      };
+  }
+  return state;
+};
+
+const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed, isActive }: IProps) => {
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(()=>{
+    dispatch({ type: isActive });
+  },[isActive])
+
   return (
     <div className="header">
       <div className="tittle">
@@ -14,16 +48,17 @@ const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed }: IProps) => {
             <span className="select-value"></span>
             <span className="select-icon">
               <TbMinus
+                id="TbMinus"
+                className={`svg ${state.Minus}`}
                 size={28}
                 height={80}
-                color="#616161"
                 onClick={ordenar_asc}
               />
-              <TbPlus size={28} color="#616161" onClick={ordenar_desc} />
+              <TbPlus id="TbPlus" className={`svg ${state.Plus}`} size={28} onClick={ordenar_desc} />
               <BiArchiveIn
                 id="archiveItems"
+                className="svg"
                 size={28}
-                color="#616161"
                 onClick={() => onClick("")}
               />
             </span>
@@ -70,6 +105,7 @@ const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed }: IProps) => {
 type IProps = {
   onClick(option: string): void;
   collapsed: string;
+  isActive: string;
   ordenar_asc?: () => void;
   ordenar_desc?: () => void;
 };
