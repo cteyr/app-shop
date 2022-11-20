@@ -21,6 +21,7 @@ const Header = ({ onClick, ordenar_asc, ordenar_desc, collapsed }: IProps) => {
               />
               <TbPlus size={28} color="#616161" onClick={ordenar_desc} />
               <BiArchiveIn
+                id="archiveItems"
                 size={28}
                 color="#616161"
                 onClick={() => onClick("")}

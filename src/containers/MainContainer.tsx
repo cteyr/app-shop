@@ -14,6 +14,13 @@ const MainContainer = () => {
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
+  document.addEventListener('mouseup', function(e: MouseEvent) {
+    var container = document.getElementById('archiveItems');
+    if (!container.contains(e.target as Node)) {
+        setCollapsed("collapsed");
+    }
+  });
+
   const filterCategory = (): Product[] => {
     if (CurrentCategory !== "All") {
       const filtered = Products.filter(
@@ -44,6 +51,7 @@ const MainContainer = () => {
   };
 
   const HanleChangeSelectMenu = (category: string) => {
+    setCollapsed("");
     if (category !== "") {
       const categorySelected = document.getElementById(category)?.textContent;
       if (categorySelected === "All") {
@@ -57,12 +65,7 @@ const MainContainer = () => {
       } else if (categorySelected === "Women's clothing") {
         setCurrentCategory("women's clothing");
       }
-    }
-
-    if (Collapsed === "") {
       setCollapsed("collapsed");
-    } else {
-      setCollapsed("");
     }
   };
 
