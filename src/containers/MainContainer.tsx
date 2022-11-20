@@ -16,7 +16,7 @@ const MainContainer = () => {
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
-  useEffect(()=>{
+  useEffect(()=>{ // Se guarda el orden original de los productos cuando se hace la llamada a la API
     setOriginalOrderProduct(Products);
   },[IsLoading])
 
