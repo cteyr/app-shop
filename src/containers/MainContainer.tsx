@@ -11,18 +11,20 @@ import orderBy from "lodash/orderBy";
 const MainContainer = () => {
   const [InputValue, setInputValue] = useState("");
   const [isActive, setisActive] = useState("");
-  const { setProducts, Products, IsLoading } = useProducts();
+  const {setProducts, Products, IsLoading } = useProducts();
+  const [originalOrderProduct, setOriginalOrderProduct] = useState<Product[]>([]);
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
 
-  document.addEventListener('mouseup', function(e: MouseEvent) {
+
+  document.addEventListener('mouseup', function(e: MouseEvent) { // Al hacer click fuera del elemento id="archiveItems" se cierra el toogle-menu
     var container = document.getElementById('archiveItems');
     if (!container.contains(e.target as Node)) {
         setCollapsed("collapsed");
     }
   });
 
-  const filterCategory = (): Product[] => {
+  const filterCategory = (): Product[] => { // Funcion que se ejecuta para filtrar por categoria 
     if (CurrentCategory !== "All") {
       const filtered = Products.filter(
         (product) => product.category === CurrentCategory
@@ -41,27 +43,31 @@ const MainContainer = () => {
     }
   };
 
-  const Ordernar_asc = () => {
+  const Ordernar_asc = () => { // Ordena los productos de manera ascendente
+    setOriginalOrderProduct(Products)
     const newProductOrder = orderBy(Products, "price", "asc");
     setProducts(newProductOrder);
     if(isActive ==="" || isActive ==="Plus"){
       setisActive("Minus");
     }else{
       setisActive("");
+      setProducts(originalOrderProduct);
     }
   };
 
-  const Ordernar_desc = () => {
+  const Ordernar_desc = () => { // Ordena los productos de manera descendente
+    setOriginalOrderProduct(Products)
     const newProductOrder = orderBy(Products, "price", "desc");
     setProducts(newProductOrder);
     if(isActive ==="" || isActive ==="Minus"){
       setisActive("Plus");
     }else{
       setisActive("");
+      setProducts(originalOrderProduct);  
     }
   };
 
-  const HanleChangeSelectMenu = (category: string) => {
+  const HanleChangeSelectMenu = (category: string) => { // Muestra los productos seleccionados segun la categoria 
     if(Collapsed==="collapsed"){
       setCollapsed("");
     }else{
