@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
 import { ItemProduct } from "../components/ItemProduct";
@@ -15,6 +15,10 @@ const MainContainer = () => {
   const [originalOrderProduct, setOriginalOrderProduct] = useState<Product[]>([]);
   const [Collapsed, setCollapsed] = useState("collapsed");
   const [CurrentCategory, setCurrentCategory] = useState("All");
+
+  useEffect(()=>{
+    setOriginalOrderProduct(Products);
+  },[IsLoading])
 
 
   document.addEventListener('mouseup', function(e: MouseEvent) { // Al hacer click fuera del elemento id="archiveItems" se cierra el toogle-menu
@@ -44,7 +48,6 @@ const MainContainer = () => {
   };
 
   const Ordernar_asc = () => { // Ordena los productos de manera ascendente
-    setOriginalOrderProduct(Products)
     const newProductOrder = orderBy(Products, "price", "asc");
     setProducts(newProductOrder);
     if(isActive ==="" || isActive ==="Plus"){
@@ -56,7 +59,6 @@ const MainContainer = () => {
   };
 
   const Ordernar_desc = () => { // Ordena los productos de manera descendente
-    setOriginalOrderProduct(Products)
     const newProductOrder = orderBy(Products, "price", "desc");
     setProducts(newProductOrder);
     if(isActive ==="" || isActive ==="Minus"){
