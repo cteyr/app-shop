@@ -32,6 +32,10 @@
       overflow-y: scroll;
       overflow-x: hidden;
       padding: 0.2rem 0.1rem;
+
+      @media screen and (min-width: 1650px) {
+        overflow-y: hidden;
+      }
     }
   }
 }
